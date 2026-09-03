@@ -1,0 +1,6 @@
+{
+  "name": "IronVault Fitness - Gym Template 01",
+  "description": "Production-ready, premium Indian gym and fitness centre website template with lead generation, WhatsApp enquiry system, and white-label customization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

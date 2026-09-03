@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IronVault Fitness</title>
+    <script>
+      // Single Page App router fallback for GitHub Pages
+      // Redirects non-hash path requests to root with hash routing
+      (function() {
+        var l = window.location;
+        var pathname = l.pathname;
+        
+        // Match repository subpath if present (e.g. /gym-01/)
+        var repoName = 'gym-01';
+        var repoIndex = pathname.indexOf('/' + repoName);
+        var base = '/';
+        var route = '';
+        
+        if (repoIndex !== -1) {
+          base = '/' + repoName + '/';
+          route = pathname.slice(repoIndex + repoName.length + 1);
+        } else {
+          route = pathname.startsWith('/') ? pathname.slice(1) : pathname;
+        }
+        
+        if (route.startsWith('/')) {
+          route = route.slice(1);
+        }
+        
+        var destination = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + base + '#/' + route + (l.search ? l.search : '') + l.hash;
+        window.location.replace(destination);
+      })();
+    </script>
+  </head>
+  <body style="background:#0b0c0e; color:#f4f4f5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0;">
+    <div style="text-align:center;">
+      <h1 style="color:#ea580c; font-size:24px; margin-bottom:8px; text-transform:uppercase; letter-spacing:2px;">IronVault Fitness</h1>
+      <p style="color:#a1a1aa; font-size:14px;">Loading page...</p>
+    </div>
+  </body>
+</html>

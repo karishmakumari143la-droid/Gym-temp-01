@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+:root {
+  --font-heading: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #0b0c0e;
+  color: #f4f4f5;
+  overflow-x: hidden;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: 0.02em;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Custom scrollbar for dark aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0c0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #272a31;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
+}
+
+/* =========================================================================
+   CINEMATIC AMBIENT & LIGHT MOTION SYSTEM
+   ========================================================================= */
+
+/* Very subtle film grain / noise overlay */
+.bg-film-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Atmospheric slow light sweep */
+@keyframes lightSweep {
+  0% {
+    transform: translate(-25%, -25%) scale(0.9);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translate(25%, 15%) scale(1.15);
+    opacity: 0.24;
+  }
+  100% {
+    transform: translate(-25%, -25%) scale(0.9);
+    opacity: 0.12;
+  }
+}
+
+.animate-light-sweep {
+  animation: lightSweep 20s ease-in-out infinite;
+}
+
+/* Very subtle orange atmospheric glow pulse */
+@keyframes orangePulse {
+  0%, 100% {
+    opacity: 0.16;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.28;
+    transform: scale(1.08);
+  }
+}
+
+.animate-orange-pulse {
+  animation: orangePulse 16s ease-in-out infinite;
+}
+
+/* Extremely subtle floating particle / dust accent */
+@keyframes particleDrift1 {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(-24px) translateX(12px);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.15;
+  }
+}
+
+@keyframes particleDrift2 {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-18px) translateX(-14px);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+}
+
+.animate-particle-1 {
+  animation: particleDrift1 18s ease-in-out infinite;
+}
+
+.animate-particle-2 {
+  animation: particleDrift2 24s ease-in-out infinite;
+}
+
+/* Subtle Technical Grid background that shifts gently */
+@keyframes gridShift {
+  0% {
+    background-position: 0px 0px;
+  }
+  50% {
+    background-position: 12px 8px;
+  }
+  100% {
+    background-position: 0px 0px;
+  }
+}
+
+.bg-technical-grid {
+  background-image: 
+    linear-gradient(to right, rgba(234, 88, 12, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(234, 88, 12, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridShift 25s ease-in-out infinite;
+}
+
+.bg-subtle-dots {
+  background-image: radial-gradient(rgba(234, 88, 12, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Hero scroll indicator vertical drop */
+@keyframes scrollLine {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(160%);
+    opacity: 0;
+  }
+}
+
+.animate-scroll-line {
+  animation: scrollLine 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* Typography Blur-to-Clear keyframes */
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-hero-1 {
+  animation: heroReveal 0.5s ease-out forwards;
+}
+.animate-hero-2 {
+  animation: heroReveal 0.6s ease-out 0.15s forwards;
+  opacity: 0;
+}
+.animate-hero-3 {
+  animation: heroReveal 0.6s ease-out 0.3s forwards;
+  opacity: 0;
+}
+.animate-hero-4 {
+  animation: heroReveal 0.6s ease-out 0.45s forwards;
+  opacity: 0;
+}
+.animate-hero-5 {
+  animation: heroReveal 0.6s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-light-sweep,
+  .animate-orange-pulse,
+  .animate-particle-1,
+  .animate-particle-2,
+  .bg-technical-grid,
+  .animate-scroll-line,
+  .animate-hero-1,
+  .animate-hero-2,
+  .animate-hero-3,
+  .animate-hero-4,
+  .animate-hero-5 {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
+
