@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Dumbbell, SlidersHorizontal } from 'lucide-react';
+import { Menu, X, Phone, Dumbbell } from 'lucide-react';
 import { GymBusinessConfig } from '../types';
 import { buildTelUrl } from '../config/gymConfig';
 
 interface NavbarProps {
   business: GymBusinessConfig;
   onJoinClick: () => void;
-  onOpenCustomizer: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   business,
   onJoinClick,
-  onOpenCustomizer,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -122,22 +120,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center gap-2.5">
-            {/* White-Label Customizer Button */}
-            <button
-              id="navbar-customize-btn"
-              onClick={onOpenCustomizer}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-semibold text-[#a1a1aa] bg-[#16181e] hover:bg-[#20232b] hover:text-white border border-[#272b35] transition-colors cursor-pointer"
-              title="Customize Gym Template Details"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#ea580c]" />
-              <span className="hidden xl:inline">Config</span>
-            </button>
-
+          <div className="hidden lg:flex items-center gap-3">
             {/* Direct Phone link */}
             <a
               href={buildTelUrl(business.phone)}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-semibold text-[#d4d4d8] hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-semibold text-[#d4d4d8] hover:text-white transition-colors"
               aria-label={`Call ${business.displayPhone}`}
             >
               <Phone className="w-3.5 h-3.5 text-[#ea580c]" />
@@ -156,13 +143,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Mobile Right Controls */}
           <div className="flex lg:hidden items-center gap-2">
-            <button
-              onClick={onOpenCustomizer}
-              className="p-2 rounded text-[#a1a1aa] hover:text-white bg-[#14161b] border border-[#22262f] cursor-pointer"
-              aria-label="Customize template"
-            >
-              <SlidersHorizontal className="w-4 h-4 text-[#ea580c]" />
-            </button>
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}

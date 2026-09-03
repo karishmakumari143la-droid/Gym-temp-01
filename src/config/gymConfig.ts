@@ -15,7 +15,7 @@ import { GymFullConfig } from '../types';
  */
 /**
  * Resolves local image assets with the active Vite base URL.
- * Ensures assets load correctly on standard roots (/) and GitHub Pages subpaths (/gym-01/).
+ * Ensures assets load correctly on standard roots (/) and GitHub Pages subpaths (/Gym-temp-01/).
  */
 export const getAssetUrl = (assetPath: string): string => {
   if (!assetPath) return '';

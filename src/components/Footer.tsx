@@ -15,10 +15,9 @@ import { buildTelUrl, buildWhatsAppUrl } from '../config/gymConfig';
 
 interface FooterProps {
   business: GymBusinessConfig;
-  onOpenCustomizer: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ business, onOpenCustomizer }) => {
+export const Footer: React.FC<FooterProps> = ({ business }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -137,7 +136,7 @@ export const Footer: React.FC<FooterProps> = ({ business, onOpenCustomizer }) =>
             </div>
           </div>
 
-          {/* Col 4: Contact & Template Info (3 cols) */}
+          {/* Col 4: Direct Contact (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="font-heading text-base font-bold uppercase tracking-wider text-white">
               Direct Contact
@@ -156,16 +155,6 @@ export const Footer: React.FC<FooterProps> = ({ business, onOpenCustomizer }) =>
                 <span>{business.email}</span>
               </p>
             </div>
-
-            <div className="pt-3">
-              <button
-                onClick={onOpenCustomizer}
-                className="w-full py-2 px-3 rounded bg-[#13161c] border border-[#272c38] hover:border-[#ea580c] text-xs font-semibold text-[#d4d4d8] hover:text-white transition-colors text-left flex items-center justify-between cursor-pointer"
-              >
-                <span>White-Label Customizer</span>
-                <span className="text-[10px] bg-[#ea580c]/20 text-[#ea580c] px-1.5 py-0.5 rounded font-mono">gym-01</span>
-              </button>
-            </div>
           </div>
         </div>
 
@@ -173,7 +162,7 @@ export const Footer: React.FC<FooterProps> = ({ business, onOpenCustomizer }) =>
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#71717a]">
           <div className="flex items-center gap-2">
             <Shield className="w-3.5 h-3.5 text-[#ea580c]" />
-            <span>© {new Date().getFullYear()} {business.name}. All Rights Reserved. Reusable Gym Template 01 (ID: gym-01).</span>
+            <span>© {new Date().getFullYear()} {business.name}. All Rights Reserved.</span>
           </div>
 
           <button

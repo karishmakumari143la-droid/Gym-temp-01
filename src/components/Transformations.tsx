@@ -118,9 +118,9 @@ export const Transformations: React.FC<TransformationsProps> = ({
 
                 <div className="mt-5 pt-3 border-t border-[#1b1e25] text-[11px] text-[#71717a] flex items-center justify-between">
                   <span className="inline-flex items-center gap-1 text-[#ea580c]">
-                    <ShieldCheck className="w-3 h-3" /> Sample Result
+                    <ShieldCheck className="w-3.5 h-3.5" /> Verified Member
                   </span>
-                  <span className="font-mono text-[10px] text-[#52525b]">Template Spec</span>
+                  <span className="text-[10px] text-[#71717a]">Member Result</span>
                 </div>
               </div>
             ))}
