@@ -42,8 +42,9 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     if (twitterImg) twitterImg.setAttribute('content', resolvedOg);
 
     // 4. Update Canonical Link
-    const baseUrl = window.location.origin;
-    const fullCanonicalUrl = `${baseUrl}${canonicalPath}`;
+    const pagePath = window.location.pathname.endsWith('/') ? window.location.pathname : `${window.location.pathname}/`;
+    const cleanCanonical = canonicalPath ? (canonicalPath.startsWith('/') ? `#${canonicalPath}` : `#/${canonicalPath}`) : '';
+    const fullCanonicalUrl = `${window.location.origin}${pagePath}${cleanCanonical}`;
 
     let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!canonicalLink) {

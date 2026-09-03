@@ -22,7 +22,13 @@
     <meta name="twitter:image" content="%BASE_URL%assets/images/gym/hero-gym.webp" />
 
     <!-- Canonical & Robots -->
-    <link rel="canonical" href="https://ironvaultfitness.in/" />
+    <link rel="canonical" href="" id="canonical-meta" />
+    <script>
+      (function() {
+        var c = document.getElementById('canonical-meta');
+        if (c) c.setAttribute('href', window.location.origin + window.location.pathname);
+      })();
+    </script>
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0b0c0e" />
 
@@ -36,11 +42,9 @@
     {
       "@context": "https://schema.org",
       "@type": "HealthClub",
-      "@id": "https://ironvaultfitness.in/#gym",
       "name": "IronVault Fitness",
       "alternateName": "IronVault Gym",
       "description": "Premium Indian Gym & Fitness Centre with certified personal training, strength zone, and luxury fitness equipment.",
-      "url": "https://ironvaultfitness.in",
       "telephone": "+919820012345",
       "priceRange": "₹₹",
       "address": {

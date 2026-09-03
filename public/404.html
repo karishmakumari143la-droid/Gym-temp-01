@@ -11,17 +11,19 @@
         var l = window.location;
         var pathname = l.pathname;
         
-        // Match repository subpath if present (e.g. /gym-01/)
-        var repoName = 'gym-01';
-        var repoIndex = pathname.indexOf('/' + repoName);
+        // Match repository subpath if present (e.g. /Gym-temp-01/)
+        var segments = pathname.split('/').filter(Boolean);
         var base = '/';
         var route = '';
         
-        if (repoIndex !== -1) {
-          base = '/' + repoName + '/';
-          route = pathname.slice(repoIndex + repoName.length + 1);
+        if (l.hostname.endsWith('github.io') && segments.length > 0) {
+          base = '/' + segments[0] + '/';
+          route = segments.slice(1).join('/');
+        } else if (segments.length > 0 && (segments[0].toLowerCase() === 'gym-temp-01' || segments[0].toLowerCase() === 'gym-01')) {
+          base = '/' + segments[0] + '/';
+          route = segments.slice(1).join('/');
         } else {
-          route = pathname.startsWith('/') ? pathname.slice(1) : pathname;
+          route = segments.join('/');
         }
         
         if (route.startsWith('/')) {

@@ -84,6 +84,8 @@ GitHub Actions Runner (Ubuntu Latest)
               ↓
 Node 22 Setup & Dependency Cache
               ↓
+Setup Pages (actions/configure-pages@v5)
+              ↓
 npm ci
               ↓
 Validate TypeScript (npm run lint)
@@ -94,13 +96,13 @@ Upload Pages Artifact (actions/upload-pages-artifact@v3)
               ↓
 Deploy to GitHub Pages (actions/deploy-pages@v4)
               ↓
-Live Website (https://<username>.github.io/gym-01/)
+Live Website (https://<username>.github.io/Gym-temp-01/)
 ```
 
 ### Initial GitHub Setup Steps
 
-1. **Create Repository**:
-   Create a repository on GitHub named `gym-01`.
+1. **Repository Name**:
+   `Gym-temp-01` (e.g. `karishmakumari143la-droid/Gym-temp-01`).
 
 2. **Push Code to GitHub**:
    ```bash
@@ -108,7 +110,7 @@ Live Website (https://<username>.github.io/gym-01/)
    git add .
    git commit -m "feat: initial release of IronVault gym template"
    git branch -M main
-   git remote add origin https://github.com/<your-github-username>/gym-01.git
+   git remote add origin https://github.com/<your-github-username>/Gym-temp-01.git
    git push -u origin main
    ```
 
@@ -124,17 +126,17 @@ Live Website (https://<username>.github.io/gym-01/)
 5. **Live URL**:
    Your live website will be accessible at:
    ```
-   https://<your-github-username>.github.io/gym-01/
+   https://karishmakumari143la-droid.github.io/Gym-temp-01/
    ```
 
 ---
 
 ## 5. Base Path & Subpath Configuration
 
-By default, GitHub Pages project sites are served from a subpath (e.g. `/gym-01/`). The template handles this automatically:
+By default, GitHub Pages project sites are served from a subpath (e.g. `/Gym-temp-01/`). The template handles this automatically:
 
 - **Local Development**: Uses `/` root path.
-- **GitHub Actions Build**: Automatically applies `/gym-01/` as the Vite base URL.
+- **GitHub Actions Build**: Automatically detects the repository name (`Gym-temp-01`) or uses `/Gym-temp-01/` as the Vite base URL.
 - **Configurable Override**: You can override the base path at any time by configuring the repository variable `VITE_BASE_PATH`:
   - Go to **Settings** → **Secrets and variables** → **Actions** → **Variables**.
   - Add variable `VITE_BASE_PATH` with your desired path (e.g. `/my-custom-path/` or `/` for custom root domains).
@@ -146,10 +148,10 @@ By default, GitHub Pages project sites are served from a subpath (e.g. `/gym-01/
 Static hosting environments like GitHub Pages do not natively support server-side URL rewrites for Single Page Applications (SPAs). This template solves this completely:
 
 1. **Hash-Based Routing (`HashRouter`)**:
-   Routes use standard URL hashes (e.g. `https://<username>.github.io/gym-01/#/why-us`, `/#/programs`, `/#/membership`, etc.). All direct links, browser reloads, and bookmarks load instantly without server roundtrips or 404 errors.
+   Routes use standard URL hashes (e.g. `https://<username>.github.io/Gym-temp-01/#/why-us`, `/#/programs`, `/#/membership`, etc.). All direct links, browser reloads, and bookmarks load instantly without server roundtrips or 404 errors.
 
 2. **Graceful SPA 404 Fallback (`public/404.html`)**:
-   If an external user or bot accesses a direct path without a hash (e.g. `/gym-01/why-us`), GitHub Pages serves `public/404.html`, which immediately redirects the browser to the proper hash route (`/gym-01/#/why-us`).
+   If an external user or bot accesses a direct path without a hash (e.g. `/Gym-temp-01/why-us`), GitHub Pages serves `public/404.html`, which immediately redirects the browser to the proper hash route (`/Gym-temp-01/#/why-us`).
 
 ### Verified Core Routes
 - `#/` — Home (Cinematic Hero, Metric Strip, Training Goals, Facility Highlights, Plans, Lead CTA)
